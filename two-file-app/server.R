@@ -3,6 +3,15 @@ server <- function(input, output){
   
   trout_filtered_df <- reactive({
     
+    validate(
+      need(length(input$channel_type_input) > 0, 
+           "Please select at least one channel type"),
+      need(length(input$section_input) > 0, 
+           "Please select at least one section")
+    )
+    
+  
+    
     # filter trout data ----
     trout_filtered_df <- clean_trout |>
       filter(channel_type %in% c(input$channel_type_input)) |>
@@ -40,10 +49,19 @@ server <- function(input, output){
  
     
     
-  })
+  },
+  
+  alt = "Alt text goes here"
+  
+  )
   
   # filter for island
   island_df <- reactive({
+    
+    validate(
+      need(length(input$penguin_island_input) > 0, 
+           "Please select at least one island")
+    )
     
     island_df <- penguins |> 
       filter(island %in% c(input$penguin_island_input))
@@ -62,7 +80,11 @@ server <- function(input, output){
            fill = "Penguin species") +
       myCustomTheme()
     
-  })
+  },
+  
+  alt = "Alt text lives here for penguins"
+  
+  )
   
   
   

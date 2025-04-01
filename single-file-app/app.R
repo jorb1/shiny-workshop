@@ -2,10 +2,18 @@
 library(shiny)
 library(tidyverse)
 library(palmerpenguins)
+library(bslib)
 
 
 # user interface ----
 ui <- fluidPage(
+  
+  theme = bs_theme(
+    bg = "#A36F6F",
+    fg = "#FDF7F7",
+    primary = "#483132",
+    base_font = font_google("Pacifico")),
+  
   # all title ----
   tags$h1("Palmer Penguins Interactive App"),
   
